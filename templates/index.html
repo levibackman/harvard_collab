@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Portfolio
+{% endblock %}
+
+{% block main %}
+    <table class="table table-striper">
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Name</th>
+                <th>Shares</th>
+                <th>Price</th>
+                <th>TOTAL</th>
+            </tr>
+        </thead>
+        <tbody>
+        <!-- TODO: Loop through the database entries to display them in this table -->
+            {% for stock in stocks %}
+                <tr>
+                    <td>{{stock.symbol}}</td>
+                    <td>{{stock.symbol}}</td>
+                    <td>{{stock.total_shares}}</td>
+                    <td>{{stock.current_price | usd }}</td>
+                    <td>{{stock.current_holding_value | usd }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <table class="table table-striper" style="text-align: center; margin: auto; width: 50%; padding: 30px; border-top: 2px solid black; margin-top: 100px;">
+        <tbody>
+            <tr>
+                <td style="font-weight: bold;">CASH</td>
+                <td>{{cash | usd}}</td>
+            </tr>
+            <tr>
+                <td style="font-weight: bold;">TOTAL HOLDINGS VALUE</td>
+                <td>{{total_holdings_value | usd }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+{% endblock %}
